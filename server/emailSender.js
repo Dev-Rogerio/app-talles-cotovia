@@ -1,0 +1,39 @@
+require("dotenv").config();
+const fs = require("fs");
+const sendgrid = require("@sendgrid/mail");
+
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+
+const sendEmail = async (recipientEmail, pdfPath) => {
+  try {
+    const attachment = fs.readFileSync(pdfPath).toString("base64");
+
+    const msg = {
+      to: recipientEmail,
+      from: process.env.EMAIL_USER,
+      subject: "Pedido de Cliente - Alfaiataria Cotovia",
+      text: `Olá, tudo bem? 
+Segue em anexo o pedido em PDF conforme solicitado. 
+Se tiver qualquer dúvida, estou à disposição!
+
+Atenciosamente,  
+Equipe Alfaiataria Cotovia`,
+      attachments: [
+        {
+          content: attachment,
+          filename: "pedido.pdf",
+          type: "application/pdf",
+          disposition: "attachment",
+        },
+      ],
+    };
+
+    await sendgrid.send(msg);
+    console.log("E-mail enviado com sucesso!");
+  } catch (error) {
+    console.error("Erro ao enviar e-mail:", error);
+    throw error;
+  }
+};
+
+module.exports = sendEmail;

@@ -1,0 +1,141 @@
+._wrapper-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: teal;
+  padding: 10px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+._wrapper-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 5px;
+  background-color: white;
+}
+
+._wrapper-table th,
+._wrapper-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  font-size: 12px;
+}
+
+._wrapper-table th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+._wrapper-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+._wrapper-table tbody tr:hover {
+  background-color: #ddd;
+}
+
+._wrapper-table td input {
+  width: 100%;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
+}
+
+.input-cell,
+._info-select,
+._info-texture,
+._info-fornecedor {
+  margin: 0 auto; /* Garante que o input ou select fique centralizado */
+  display: block; /* Remove qualquer comportamento inline */
+}
+._info-select {
+  width: 100%;
+  outline: none;
+}
+._button-Acoes div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+._button-Acoes {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: centers;
+}
+
+@media (max-width: 365px) {
+  ._wrapper-option {
+    padding: 0;
+  }
+  ._wrapper-table th {
+    font-size: 7px;
+  }
+
+  ._wrapper-table,
+  ._tab-tbody input::placeholder {
+    font-size: 7px;
+  }
+  ._wrapper-table,
+  ._tab-tbody td {
+    text-align: center;
+    vertical-align: middle;
+    /* background-color: red; */
+    /* padding: 5px; */
+  }
+  ._wrapper-table,
+  ._tab-tbody select {
+    font-size: 7px;
+    border: 1px solid #d2d2d2;
+    /* background-color: goldenrod; */
+  }
+  ._button-Acoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    gap: 10px;
+    width: 100%;
+    background-color: violet;
+  }
+  ._button-Acoes button {
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    margin-top: 5px;
+  }
+  ._info-fornecedor option {
+    font-size: 7px;
+    margin: 0;
+    padding: 0;
+    height: 10px;
+  }
+  .input-cell {
+    font-size: 7px !important;
+  }
+
+  ._info-select,
+  ._info-texture,
+  ._info-fornecedor {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="brack"><path d="M7 10l5 5 5-5H7z"/></svg>')
+      no-repeat right 1px center;
+    background-size: 10px;
+    padding-right: 20px;
+    width: 100%;
+    background-color: red;
+  }
+
+  ._info-select:focus {
+    outline: none; /* Remove o contorno ao focar */
+    border-color: teal; /* Adiciona um destaque opcional */
+  }
+}

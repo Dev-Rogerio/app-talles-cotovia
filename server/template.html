@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedido de Cliente</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: white !important;
+      }
+
+      .TitlleAlfaiatariaCotovia {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 20px;
+        background-color: black !important;
+        border: 1px solid black;
+        color: white;
+      }
+
+      @media print {
+        .TitlleAlfaiatariaCotovia {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+      }
+
+      ._dataClientColumnOne {
+        display: flex;
+        width: 100%;
+        height: 150px;
+        margin: 7px 0;
+        font-size: 14px;
+        text-align: left;
+        white-space: nowrap;
+        gap: 3px;
+        box-sizing: border-box;
+      }
+
+      ._dataClientColumnOne section {
+        flex: 1;
+        height: 100%;
+        border: 1px solid black;
+        box-sizing: border-box;
+        padding: 10px;
+        background-color: white;
+      }
+
+      ._dataMeasureColumnTwo {
+        display: flex;
+        width: 100%;
+        height: 380px;
+        margin: 7px 0;
+        font-size: 14px;
+        text-align: left;
+        gap: 3px;
+        box-sizing: border-box;
+      }
+
+      ._dataMeasureColumnTwo section {
+        flex: 1;
+        height: 100%;
+        border: 1px solid black;
+        box-sizing: border-box;
+        padding: 10px;
+        background-color: white;
+      }
+
+      ._dataMeasureColumnTwo section p:nth-child() ._areaTextCescrition {
+        width: 100%;
+        margin-top: 7px;
+        margin-bottom: 7px;
+      }
+
+      ._areaTextCescrition section {
+        width: 100%;
+        height: 180px;
+        border: 1px solid black;
+      }
+
+      ._areaTextCescrition section p {
+        margin: 2px 0;
+        padding: 10px;
+        line-height: 1.5;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="TitlleAlfaiatariaCotovia">Alfaiataria Cotovia</div>
+
+    <div class="_dataClientColumnOne">
+      <section>
+        <p><strong>Nome:</strong> {{client}}</p>
+        <p><strong>CPF:</strong> {{cpf}}</p>
+      </section>
+      <section>
+        <p><strong>Nº do pedido:</strong> {{id}}</p>
+        <p><strong>Vendedor:</strong> {{vendedor}}</p>
+        <p><strong>Data do Pedido:</strong> {{inputDate}}</p>
+        <p><strong>Previsão de Entrega:</strong> {{deliveryDate}}</p>
+      </section>
+    </div>
+
+    <div class="TitlleAlfaiatariaCotovia">Medidas</div>
+
+    <div class="_dataMeasureColumnTwo">
+      <section>
+        <p><strong>Colar:</strong> {{colar}}</p>
+        <p><strong>Pala:</strong> {{pala}}</p>
+        <p><strong>Manga:</strong> {{manga}}</p>
+        <p><strong>Tórax:</strong> {{torax}}</p>
+        <p><strong>Cintura:</strong> {{cintura}}</p>
+        <p><strong>Quadril:</strong> {{quadril}}</p>
+        <p><strong>Cumprimento:</strong> {{cumprimento}}</p>
+        <p><strong>Biceps:</strong> {{biceps}}</p>
+        <p><strong>Antebraço:</strong> {{antebraco}}</p>
+        <p><strong>Punho Esq.:</strong> {{punhoEsquerdo}}</p>
+        <p><strong>Punho Dir.:</strong> {{punhoDireito}}</p>
+      </section>
+
+      <section>
+        <p><strong>Modelo de Colar:</strong> {{modelColar}}</p>
+        <p><strong>Modelo de Punho:</strong> {{modelFish}}</p>
+        <p><strong>Tipo de Frente:</strong> {{typeFront}}</p>
+        <p><strong>Barbatana:</strong> {{barbatana}}</p>
+        <p><strong>Modelo da Camisa:</strong> {{typeModel}}</p>
+        <p><strong>Pense:</strong> {{typePense}}</p>
+        <p><strong>Rígido:</strong> {{extraRigido}}</p>
+        <p><strong>Monograma:</strong> {{monograma}}</p>
+        <p><strong>Metro de tecido:</strong> {{metersTissue}}</p>
+      </section>
+    </div>
+
+    <div class="TitlleAlfaiatariaCotovia">Descrição</div>
+
+    <div class="_areaTextCescrition">
+      <section>
+        <p>{{description}}</p>
+      </section>
+    </div>
+
+    <div class="TitlleAlfaiatariaCotovia">Opções Selecionadas</div>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Cód. Produto</th>
+          <th>Cód. Tecido</th>
+          <th>Textura</th>
+          <th>Fornecedor</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each rows}}
+        <tr>
+          <td>{{this.codTextil}}</td>
+          <td>{{this.codProduct}}</td>
+          <td>{{this.texture}}</td>
+          <td>{{this.fornecedor}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </body>
+</html>

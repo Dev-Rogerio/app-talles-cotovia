@@ -1,0 +1,340 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: #0178c7;
+  --secondary-color: #19a152;
+  --text-color: #333;
+  --background-color: #f4f4f4;
+  --button-houver-color: #208048;
+  --button-sair-color: #ccc;
+}
+p {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 2px;
+  font-size: 0.7em;
+}
+h1 {
+  font-size: 0.8em;
+  margin: 0;
+}
+h2 {
+  font-size: 12px;
+  text-align: center;
+}
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.modal > div {
+  position: relative;
+  width: 95%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 5px;
+  max-width: 800px;
+  border: 1px solid #2229;
+  box-shadow: 0 4px 6px rgba(0, 5, 5, 0.5);
+  overflow-y: auto;
+}
+
+._navModalMeasure {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  height: 50px;
+  grid-column: 1 / span 2;
+  grid-row: 1;
+  margin: 0;
+}
+._navModalMeasure img {
+  margin-left: 25px;
+  width: 15%;
+}
+.text-titlle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  grid-row: 2;
+  grid-column: 1 / span 2;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+.sectorClientSuplier {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  gap: 2px;
+  text-indent: 5px;
+}
+._sectionClient {
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid #ccc;
+  margin: 0;
+}
+
+._sectionClient p {
+  text-transform: capitalize;
+}
+._sectionDateInfo {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #bdb8b8;
+  border: 1px solid #ccc;
+}
+.vendedor {
+  text-transform: capitalize !important;
+}
+
+.sectorTissueAndMonograma {
+  display: grid;
+  width: 100%;
+  height: auto;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 7px 0;
+}
+._row-MetersTissue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1;
+  margin: 0;
+}
+._row-Monograma {
+  display: flex;
+  justify-content: center;
+  grid-column: 2;
+  grid-row: 1;
+}
+.sectorPersonalized {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  text-indent: 5px;
+  margin-top: 3px;
+}
+._firstLeft-MeasureDate {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1;
+  border: 1px solid #ccc;
+  margin: 0;
+}
+._secondRight-MeasureDate {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  grid-row: 1;
+  border: 1px solid #ccc;
+}
+
+_secondRight-MeasureDate p:nth-of-type(2) {
+  text-transform: capitalize;
+}
+._secondRight-MeasureDate p:nth-child(4) {
+  text-transform: capitalize;
+}
+
+._wrapperModArea {
+  width: 100%;
+  height: 130px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+._wrapperModArea textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 0.5em;
+}
+
+.areaButton button {
+  font-size: 10px;
+}
+._wrapper-divFooter .areaButton button:nth-of-type(2) {
+  background-color: var(--primary-color);
+}
+._wrapper-divFooter .areaButton button:nth-of-type(3) {
+  background-color: var(--button-sair-color);
+  color: black;
+}
+._wrapper-divFooter .areaButton button:nth-of-type(3):hover {
+  background-color: #acabab;
+}
+
+._containnerModalMeasure {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  gap: 10px;
+}
+._containnerModalMeasure::-webkit-scrollbar {
+  width: 8px;
+}
+._containnerModalMeasure::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+._containnerModalMeasure::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+._containnerModalMeasure::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+._all-Tissue {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* background-color: yellowgreen; */
+}
+._all-Tissue section {
+  display: flex;
+}
+
+/* ._wrapper-InfoDescription {
+          display: flex;
+          width: 100%;
+          justify-content: center; 
+          margin-top: 20px;
+          gap: 20px;
+        } */
+
+._wrapper-InfoDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Reduzimos o gap entre as linhas */
+  padding: 20px;
+}
+
+._header-row {
+  display: flex;
+  gap: 15px; /* Menos espaçamento entre os rótulos */
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+
+._row-details {
+  display: flex;
+  gap: 15px; /* Menos espaçamento entre as colunas */
+  border: 1px solid #ddd;
+  padding: 8px; /* Menos padding, deixando tudo mais próximo */
+  border-radius: 5px;
+  align-items: center;
+}
+
+._row-details .detail-item {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+._row-details p {
+  margin: 0;
+  width: 100%; /* Garante que as descrições ocuparam o mesmo espaço */
+}
+
+._row-details .detail-item p {
+  margin: 0;
+  text-align: left;
+}
+
+._wrapper-InfoDescription strong {
+  margin-left: 5px;
+}
+._wrapper-InfoDescription p {
+  font-size: 8px;
+}
+._wrapper-InfoDescription select {
+  outline: none;
+}
+._wrapper-InfoDescription table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2px 0;
+  font-size: 1em;
+  text-align: left;
+  /* background-color: yellowgreen; */
+}
+
+table thead tr th {
+  font-size: 12px;
+}
+
+table tbody tr td {
+  font-size: 12px;
+}
+td {
+  /* border:  1px solid #ddd; */
+  padding: 2px;
+}
+td.center {
+  text-align: center;
+}
+td.right {
+  text-align: right;
+}
+
+@media (min-width: 768px) {
+  ._wrapperModArea textarea {
+    font-size: 0.8em;
+    padding: 10px;
+  }
+}
+@media print {
+  ._sevem-MeasureDate {
+    display: none;
+  }
+  p {
+    font-size: 0.8em;
+  }
+  .sectorBotton {
+    display: none;
+  }
+  .containerTypeMeasure {
+    width: 100% !important;
+  }
+  .form-ScreenTokenMeasure {
+    width: 100% !important;
+  }
+  .sectorTissueAndMonograma {
+    display: none;
+  }
+  .sectorPersonalized {
+    margin-top: 5px;
+  }
+  ._wrapperModArea {
+    width: 100%;
+    padding: 10px;
+  }
+  ._wrapperModArea textarea {
+    font-size: 0.8em;
+    padding: 10px;
+  }
+}
