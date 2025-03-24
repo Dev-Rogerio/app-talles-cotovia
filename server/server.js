@@ -19,7 +19,15 @@ const PORT = process.env.PORT || 5000;
 // );
 app.use(express.json());
 
-app.use(cors());
+// app.use(cors());
+
+app.use(
+  cors({
+    origin: ["https://celadon-squirrel-04eb5c.netlify.app"], // seu frontend publicado
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
 // Rota para processar o pedido e enviar o e-mail
 app.post("/send-pedido", async (req, res) => {
