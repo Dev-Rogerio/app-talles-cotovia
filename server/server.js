@@ -9,7 +9,16 @@ const app = express();
 // const PORT = 5000;
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://moonlit-salmiakki-043e53.netlify.app", // seu frontend no Netlify
+    ],
+  })
+);
+app.use(express.json());
+
 app.use(express.json());
 
 // Rota para processar o pedido e enviar o e-mail
