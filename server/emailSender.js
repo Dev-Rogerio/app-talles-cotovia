@@ -1,17 +1,21 @@
 require("dotenv").config();
 const fs = require("fs");
 const sendgrid = require("@sendgrid/mail");
+const express = require("express");
+
+const app = express();
+app.use(express.json());
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
-const sendEmail = async (recipientEmail, pdfPath) => {
+const sendEmail = async (recipientEmail, pdfPath, client) => {
   try {
     const attachment = fs.readFileSync(pdfPath).toString("base64");
 
     const msg = {
       to: recipientEmail,
       from: process.env.EMAIL_USER,
-      subject: "Pedido de Cliente - Alfaiataria Cotovia",
+      subject: `Pedido ${client} - Alfaiataria Cotovia`,
       text: `Olá, tudo bem? 
 Segue em anexo o pedido em PDF conforme solicitado. 
 Se tiver qualquer dúvida, estou à disposição!

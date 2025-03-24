@@ -6,7 +6,8 @@ const generatorPDF = require("./pdfGenerator");
 const sendEmail = require("./emailSender");
 
 const app = express();
-const PORT = 5000;
+// const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -16,12 +17,13 @@ app.post("/send-pedido", async (req, res) => {
   try {
     const data = req.body;
     const recipientEmail = "roger.ngt3494@gmail.com"; // Altere para o e-mail do cliente
+    const client = data.client;
 
     // Gerar o PDF
     const pdfPath = await generatorPDF(data);
 
     // Enviar e-mail com o PDF anexado
-    await sendEmail(recipientEmail, pdfPath);
+    await sendEmail(recipientEmail, pdfPath, client);
 
     res.json({ message: "E-mail enviado com sucesso!" });
   } catch (error) {

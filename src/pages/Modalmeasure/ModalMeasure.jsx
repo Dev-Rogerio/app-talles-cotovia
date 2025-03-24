@@ -5,6 +5,8 @@ import axios from "axios";
 
 import "./ModalMeasure.css";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const ModalMeasure = ({
   openMeasure,
   setOpenMeasure,
@@ -90,7 +92,7 @@ const ModalMeasure = ({
 
   const handleSendEmail = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/send-pedido", {
+      const response = await axios.post(`${API_URL}/send-pedido`, {
         cpf,
         client,
         colar,
