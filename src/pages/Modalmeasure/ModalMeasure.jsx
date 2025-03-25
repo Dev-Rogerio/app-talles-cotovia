@@ -92,8 +92,6 @@ const ModalMeasure = ({
     }
   };
 
-  //   -----------------------------------------------------------------------------------------------------------------------
-
   // Função para imprimir o conteúdo do modal
   const handlePrint = () => {
     const originalBody = document.body.innerHTML;

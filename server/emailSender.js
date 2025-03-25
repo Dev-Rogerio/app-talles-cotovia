@@ -11,6 +11,7 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 const sendEmail = async (recipientEmail, pdfPath, client) => {
   try {
     const attachment = fs.readFileSync(pdfPath).toString("base64");
+    const emailCopy = process.env.EMAIL_COPY || recipientEmail;
 
     const msg = {
       to: [recipientEmail, process.env.EMAIL_COPY],
@@ -19,7 +20,6 @@ const sendEmail = async (recipientEmail, pdfPath, client) => {
       text: `Olá, tudo bem? 
 Segue em anexo o pedido em PDF conforme solicitado. 
 Se tiver qualquer dúvida, estou à disposição!
-
 Atenciosamente,  
 Equipe Alfaiataria Cotovia`,
       attachments: [
@@ -39,5 +39,4 @@ Equipe Alfaiataria Cotovia`,
     throw error;
   }
 };
-
 module.exports = sendEmail;
