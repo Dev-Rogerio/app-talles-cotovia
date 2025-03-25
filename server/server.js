@@ -20,11 +20,18 @@ app.use(express.json());
 
 // app.use(cors());
 
+// app.use(
+//   cors({
+//     origin: ["https://cotovia.netlify.app"], // nova URL do frontend
+//     methods: ["GET", "POST"],
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
-    origin: ["https://cotovia.netlify.app"], // nova URL do frontend
+    origin: "*",
     methods: ["GET", "POST"],
-    credentials: true,
   })
 );
 
@@ -32,7 +39,7 @@ app.use(
 app.post("/send-pedido", async (req, res) => {
   try {
     const data = req.body;
-    const recipientEmail = process.env.RECEIVER_EMAIL;
+    const recipientEmail = process.env.EMAIL_DESTINATARIO;
     const client = data.client;
 
     // Gerar o PDF

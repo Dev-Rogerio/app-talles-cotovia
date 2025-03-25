@@ -13,7 +13,7 @@ const sendEmail = async (recipientEmail, pdfPath, client) => {
     const attachment = fs.readFileSync(pdfPath).toString("base64");
 
     const msg = {
-      to: recipientEmail,
+      to: [recipientEmail, process.env.EMAIL_COPY],
       from: process.env.EMAIL_USER,
       subject: `Pedido ${client} - Alfaiataria Cotovia`,
       text: `Olá, tudo bem? 
