@@ -5,7 +5,9 @@ import axios from "axios";
 
 import "./ModalMeasure.css";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+// const API_URL = process.env.REACT_APP_API_URL || "https://seu-backend-no-render.onrender.com";
+// const API_URL =  process.env.REACT_APP_API_URL || "https://seu-backend-no-render.onrender.com";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const ModalMeasure = ({
   openMeasure,
