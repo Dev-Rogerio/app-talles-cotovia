@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const chromium = require("@sparticuz/chromium");
 const puppeteer = require("puppeteer");
 const Handlebars = require("handlebars");
 
@@ -15,23 +16,18 @@ const generatorPDF = async (data) => {
     const template = Handlebars.compile(templateHtml);
     const htmlContent = template(data);
 
-    // Iniciando o Puppeteer para gerar o PDF
-    // const browser = await puppeteer.launch();
-    // const browser = await puppeteer.launch({
-    //   args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    //   // headless: true,
-    // });
-
+    // Iniciando o Puppeteer com Chromium do pacote
     const browser = await puppeteer.launch({
-      executablePath: "/usr/bin/google-chrome",
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
     });
 
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: "networkidle0" });
 
     // Gerando o PDF
-    const pdfPath = __dirname + "/pedido.pdf";
+    const pdfPath = path.join(__dirname, "pedido.pdf");
     await page.pdf({ path: pdfPath, format: "A4", printBackground: true });
 
     await browser.close();
