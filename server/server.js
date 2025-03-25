@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const generatorPDF = require("./pdfGenerator");
-
 const sendEmail = require("./emailSender");
 
 const app = express();
@@ -23,7 +22,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["https://celadon-squirrel-04eb5c.netlify.app"], // seu frontend publicado
+    origin: ["https://moonlit-salmiakki-043e53.netlify.app/"], // seu frontend publicado
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -33,7 +32,7 @@ app.use(
 app.post("/send-pedido", async (req, res) => {
   try {
     const data = req.body;
-    const recipientEmail = "roger.ngt3494@gmail.com"; // Altere para o e-mail do cliente
+    const recipientEmail = process.env.RECEIVER_EMAIL;
     const client = data.client;
 
     // Gerar o PDF

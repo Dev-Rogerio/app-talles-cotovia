@@ -5,14 +5,22 @@ const Handlebars = require("handlebars");
 const generatorPDF = async (data) => {
   try {
     // Lendo o template HTML
-    const templateHtml = fs.readFileSync(__dirname + "/template.html", "utf8");
+    const templateHtml = fs.readFileSync(
+      path.join(__dirname, "template.html"),
+      "utf8"
+    );
 
     // Compilando o template com Handlebars
     const template = Handlebars.compile(templateHtml);
     const htmlContent = template(data);
 
     // Iniciando o Puppeteer para gerar o PDF
-    const browser = await puppeteer.launch();
+    // const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      // headless: true,
+    });
+
     const page = await browser.newPage();
     await page.setContent(htmlContent, { waitUntil: "networkidle0" });
 
