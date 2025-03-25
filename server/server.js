@@ -22,7 +22,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["https://moonlit-salmiakki-043e53.netlify.app/"], // seu frontend publicado
+    origin: ["https://cotovia.netlify.app/"], // seu frontend publicado
     methods: ["GET", "POST"],
     credentials: true,
   })
