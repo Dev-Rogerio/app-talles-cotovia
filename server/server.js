@@ -22,7 +22,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["https://cotovia.netlify.app/"], // seu frontend publicado
+    origin: ["https://cotovia.netlify.app"], // nova URL do frontend
     methods: ["GET", "POST"],
     credentials: true,
   })
