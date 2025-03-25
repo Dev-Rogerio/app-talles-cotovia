@@ -5,26 +5,15 @@ const generatorPDF = require("./pdfGenerator");
 const sendEmail = require("./emailSender");
 
 const app = express();
-// const PORT = 5000;
+
 const PORT = process.env.PORT || 5000;
 
-// app.use(
-//   cors({
-//     origin: [
-//       "http://localhost:3000",
-//       "https://moonlit-salmiakki-043e53.netlify.app", // seu frontend no Netlify
-//     ],
-//   })
-// );
 app.use(express.json());
-
-// app.use(cors());
 
 app.use(
   cors({
-    origin: ["https://cotovia.netlify.app"], // nova URL do frontend
+    origin: "*",
     methods: ["GET", "POST"],
-    credentials: true,
   })
 );
 
@@ -32,7 +21,12 @@ app.use(
 app.post("/send-pedido", async (req, res) => {
   try {
     const data = req.body;
-    const recipientEmail = process.env.RECEIVER_EMAIL;
+    if (!data || !data.client) {
+      return res
+        .status(400)
+        .json({ error: "Dados incompletos para o pedido." });
+    }
+    const recipientEmail = process.env.EMAIL_DESTINATARIO;
     const client = data.client;
 
     // Gerar o PDF
