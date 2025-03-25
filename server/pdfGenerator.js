@@ -17,9 +17,14 @@ const generatorPDF = async (data) => {
 
     // Iniciando o Puppeteer para gerar o PDF
     // const browser = await puppeteer.launch();
+    // const browser = await puppeteer.launch({
+    //   args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    //   // headless: true,
+    // });
+
     const browser = await puppeteer.launch({
+      executablePath: "/usr/bin/google-chrome",
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
-      // headless: true,
     });
 
     const page = await browser.newPage();
