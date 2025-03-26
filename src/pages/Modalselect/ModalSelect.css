@@ -69,7 +69,7 @@
   align-items: centers;
 }
 
-@media (max-width: 365px) {
+@media (max-width: 562px) {
   ._wrapper-option {
     padding: 0;
   }
@@ -81,6 +81,7 @@
   ._tab-tbody input::placeholder {
     font-size: 7px;
   }
+
   ._wrapper-table,
   ._tab-tbody td {
     text-align: center;
@@ -99,9 +100,8 @@
     justify-content: center;
     align-items: center;
     padding: 0;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
-    background-color: violet;
   }
   ._button-Acoes button {
     width: auto;
@@ -131,7 +131,6 @@
     background-size: 10px;
     padding-right: 20px;
     width: 100%;
-    background-color: red;
   }
 
   ._info-select:focus {

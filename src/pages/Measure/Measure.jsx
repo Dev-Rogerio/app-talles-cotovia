@@ -1187,27 +1187,6 @@ function Measure() {
           <footer className="_wrapper-div">
             <section className="_wrapper-divFooter">
               <div className="areaButton">
-                {/* <button
-                  type="button"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    console.log("Validando formulário...");
-                    if (!validateFields()) {
-                      console.log(
-                        "Validação falhou. Corrija os campos obrigatórios."
-                      );
-                      return;
-                      console.log(
-                        "Campos válidos! Preparando para enviar e-mail..."
-                      );
-                    }
-                    setOpenMeasure(!openMeasure);
-                    console.log("Campo válido, coninuando...");
-                  }}
-                >
-                  Enviar
-                </button> */}
-
                 <button
                   type="button"
                   onClick={(e) => {

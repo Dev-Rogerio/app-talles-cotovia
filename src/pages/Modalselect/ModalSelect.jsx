@@ -59,8 +59,8 @@ const ModalSelect = ({ openSelect = false, rows, setRows }) => {
         <table className="_wrapper-table">
           <thead>
             <tr>
-              <th>Cód. do Produto</th>
-              <th>Cód. do Tecido</th>
+              <th>Cód. Produto. </th>
+              <th>Cód. Tecido.</th>
               <th>Textura</th>
               <th>Fornecedor</th>
               <th>Ações</th>
@@ -142,7 +142,7 @@ const ModalSelect = ({ openSelect = false, rows, setRows }) => {
                     aria-label="Adicionar linha"
                     color="primary"
                   >
-                    <AddIcon fontSize="small" />
+                    <AddIcon sx={{ fontSize: 12 }} />
                   </IconButton>
                   <IconButton
                     onClick={() => removeRow(index)}
@@ -150,7 +150,7 @@ const ModalSelect = ({ openSelect = false, rows, setRows }) => {
                     color="secondary"
                     disabled={rows.length <= 1}
                   >
-                    <DeleteIcon fontSize="small" />
+                    <DeleteIcon sx={{ fontSize: 12 }} />
                   </IconButton>
                 </td>
               </tr>
