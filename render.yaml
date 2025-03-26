@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: server
+    env: node
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    plan: free
+    branches:
+      - main
+    autoDeploy: true
+    docker:
+      image: "node:16"
