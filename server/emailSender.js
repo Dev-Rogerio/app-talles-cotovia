@@ -16,6 +16,7 @@ const sendEmail = async (data) => {
 
     const msg = {
       to: "roger.ngt3494@gmail.com", // Altere para o seu e-mail ou use o que está no .env
+      cc: "adriana.kamisaria@gmail.com",
       from: "tallescotovia@gmail.com", // Precisa ser um e-mail verificado na SendGrid
       subject: `Pedido de ${data.client} - Cotovia`,
       text: `Pedido realizado por ${data.client}, vendedor ${data.vendedor}.`,
