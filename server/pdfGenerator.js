@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const chromium = require("@sparticuz/chromium");
-const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const Handlebars = require("handlebars");
 
 // Função para preencher campos vazios com "Não informado"

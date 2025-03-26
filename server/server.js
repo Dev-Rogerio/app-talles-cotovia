@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/send-pedido", async (req, res) => {
+  console.log("Requisição recebida: ", req.body);
   try {
     const data = req.body;
     console.log("Dados recebidos para envio:", data);

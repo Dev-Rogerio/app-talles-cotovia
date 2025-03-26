@@ -6,6 +6,7 @@ require("dotenv").config();
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+// Definindo a função sendEmail primeiro
 const sendEmail = async (data) => {
   try {
     console.log("Gerando PDF para envio...");
@@ -14,8 +15,8 @@ const sendEmail = async (data) => {
     const pdfContent = fs.readFileSync(pdfPath).toString("base64");
 
     const msg = {
-      to: process.env.EMAIL_DESTINO, // Altere para o seu e-mail ou use o que está no .env
-      from: process.env.EMAIL_REMETENTE, // Precisa ser um e-mail verificado na SendGrid
+      to: "roger.ngt3494@gmail.com", // Altere para o seu e-mail ou use o que está no .env
+      from: "tallescotovia@gmail.com", // Precisa ser um e-mail verificado na SendGrid
       subject: `Pedido de ${data.client} - Cotovia`,
       text: `Pedido realizado por ${data.client}, vendedor ${data.vendedor}.`,
       attachments: [
@@ -42,5 +43,21 @@ const sendEmail = async (data) => {
     throw error;
   }
 };
+
+// Função de teste que chama o sendEmail
+const testEmail = async () => {
+  try {
+    const result = await sendEmail({
+      client: "Cliente Teste",
+      vendedor: "Vendedor Teste",
+    });
+    console.log("Resultado do teste de envio de e-mail:", result);
+  } catch (error) {
+    console.error("Erro no teste de envio de e-mail:", error);
+  }
+};
+
+// Chamando a função de teste
+testEmail();
 
 module.exports = sendEmail;
