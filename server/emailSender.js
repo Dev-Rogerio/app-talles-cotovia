@@ -1,42 +1,46 @@
-require("dotenv").config();
+const sgMail = require("@sendgrid/mail");
+const generatorPDF = require("./pdfGenerator");
 const fs = require("fs");
-const sendgrid = require("@sendgrid/mail");
-const express = require("express");
+const path = require("path");
+require("dotenv").config();
 
-const app = express();
-app.use(express.json());
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
-
-const sendEmail = async (recipientEmail, pdfPath, client) => {
+const sendEmail = async (data) => {
   try {
-    const attachment = fs.readFileSync(pdfPath).toString("base64");
-    const emailCopy = process.env.EMAIL_COPY || recipientEmail;
+    console.log("Gerando PDF para envio...");
+    const pdfPath = await generatorPDF(data);
+
+    const pdfContent = fs.readFileSync(pdfPath).toString("base64");
 
     const msg = {
-      to: [recipientEmail, process.env.EMAIL_COPY],
-      from: process.env.EMAIL_USER,
-      subject: `Pedido ${client} - Alfaiataria Cotovia`,
-      text: `Olá, tudo bem? 
-Segue em anexo o pedido em PDF conforme solicitado. 
-Se tiver qualquer dúvida, estou à disposição!
-Atenciosamente,  
-Equipe Alfaiataria Cotovia`,
+      to: process.env.EMAIL_DESTINO, // Altere para o seu e-mail ou use o que está no .env
+      from: process.env.EMAIL_REMETENTE, // Precisa ser um e-mail verificado na SendGrid
+      subject: `Pedido de ${data.client} - Cotovia`,
+      text: `Pedido realizado por ${data.client}, vendedor ${data.vendedor}.`,
       attachments: [
         {
-          content: attachment,
-          filename: "pedido.pdf",
+          content: pdfContent,
+          filename: `Pedido_${data.client}.pdf`,
           type: "application/pdf",
           disposition: "attachment",
         },
       ],
     };
 
-    await sendgrid.send(msg);
+    console.log("Enviando e-mail...");
+    await sgMail.send(msg);
     console.log("E-mail enviado com sucesso!");
+
+    // Removendo o PDF do /tmp após o envio
+    fs.unlinkSync(pdfPath);
+    console.log("PDF removido do servidor.");
+
+    return { success: true, message: "E-mail enviado com sucesso!" };
   } catch (error) {
-    console.error("Erro ao enviar e-mail:", error);
+    console.error("Erro ao enviar e-mail:", error.response?.body || error);
     throw error;
   }
 };
+
 module.exports = sendEmail;
